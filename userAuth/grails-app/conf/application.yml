@@ -1,0 +1,118 @@
+---
+grails:
+    profile: rest-api
+    codegen:
+        defaultPackage: userauth
+    gorm:
+        reactor:
+            # Whether to translate GORM events into Reactor events
+            # Disabled by default for performance reasons
+            events: false
+info:
+    app:
+        name: '@info.app.name@'
+        version: '@info.app.version@'
+        grailsVersion: '@info.app.grailsVersion@'
+spring:
+    main:
+        banner-mode: "off"
+    groovy:
+        template:
+            check-template-location: false
+
+# Spring Actuator Endpoints are Disabled by Default
+endpoints:
+    enabled: false
+    jmx:
+        enabled: true
+
+server:
+    port: 8060
+    contextPath: /userauth
+
+---
+grails:
+    mime:
+        disable:
+            accept:
+                header:
+                    userAgents:
+                        - Gecko
+                        - WebKit
+                        - Presto
+                        - Trident
+        types:
+            json:
+              - application/json
+              - text/json   
+            hal:
+              - application/hal+json
+              - application/hal+xml  
+            xml:
+              - text/xml
+              - application/xml                                 
+            atom: application/atom+xml
+            css: text/css
+            csv: text/csv
+            js: text/javascript
+            rss: application/rss+xml
+            text: text/plain
+            all: '*/*'            
+    urlmapping:
+        cache:
+            maxsize: 1000
+    controllers:
+        defaultScope: singleton
+    converters:
+        encoding: UTF-8
+
+---
+hibernate:
+    cache:
+        queries: false
+        use_second_level_cache: false
+        use_query_cache: false
+dataSource:
+    pooled: true
+    jmxExport: true
+    driverClassName: com.mysql.jdbc.Driver
+    dialect: "org.hibernate.dialect.MySQL5InnoDBDialect"
+
+environments:
+    development:
+        dataSource:
+            dbCreate:
+#            url: "jdbc:mysql://foodb.ct9k3enw85nh.us-west-2.rds.amazonaws.com:3306/magento?useUnicode=yes&characterEncoding=UTF-8"
+            url: "jdbc:mysql://52.36.207.208:3306/magento?useUnicode=yes&characterEncoding=UTF-8"
+            username: "root"
+            password: "root80603"
+    test:
+        dataSource:
+            dbCreate: update
+            url: jdbc:mysql://localhost:8889/eyecloud4;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
+            username: "root"
+            password: "root80603"
+    production:
+        dataSource:
+            dbCreate: "update"
+            url: "jdbc:mysql://52.36.207.208:3306/magento?useUnicode=yes&characterEncoding=UTF-8"
+            username: "root"
+            password: "root80603"
+            properties:
+                jmxEnabled: true
+                initialSize: 5
+                maxActive: 50
+                minIdle: 5
+                maxIdle: 25
+                maxWait: 10000stop-
+                maxAge: 600000
+                timeBetweenEvictionRunsMillis: 5000
+                minEvictableIdleTimeMillis: 60000
+                validationQuery: SELECT 1
+                validationQueryTimeout: 3
+                validationInterval: 15000
+                testOnBorrow: true
+                testWhileIdle: true
+                testOnReturn: false
+                jdbcInterceptors: ConnectionState
+                defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
