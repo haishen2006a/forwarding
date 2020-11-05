@@ -95,7 +95,8 @@ environments:
     production:
         dataSource:
             dbCreate: "update"
-            url: "jdbc:mysql://foodb.ct9k3enw85nh.us-west-2.rds.amazonaws.com:3306/magento?useUnicode=yes&characterEncoding=UTF-8"
+#            url: "jdbc:mysql://foodb.ct9k3enw85nh.us-west-2.rds.amazonaws.com:3306/magento?useUnicode=yes&characterEncoding=UTF-8"
+            url: "jdbc:mysql://staging23.eyeque.com:3306/magento?useUnicode=yes&characterEncoding=UTF-8"
             username: "root"
             password: "root80603"
             properties:
