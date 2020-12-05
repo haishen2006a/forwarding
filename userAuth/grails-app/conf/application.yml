@@ -82,8 +82,8 @@ environments:
     development:
         dataSource:
             dbCreate:
-#            url: "jdbc:mysql://foodb.ct9k3enw85nh.us-west-2.rds.amazonaws.com:3306/magento?useUnicode=yes&characterEncoding=UTF-8"
-            url: "jdbc:mysql://52.36.207.208:3306/magento?useUnicode=yes&characterEncoding=UTF-8"
+#            url: "jdbc:mysql://52.37.8.218:3306/magento?useUnicode=yes&characterEncoding=UTF-8"
+            url: "jdbc:mysql://34.215.48.250:3306/magento?useUnicode=yes&characterEncoding=UTF-8"
             username: "root"
             password: "root80603"
     test:
@@ -95,7 +95,7 @@ environments:
     production:
         dataSource:
             dbCreate: "update"
-            url: "jdbc:mysql://52.36.207.208:3306/magento?useUnicode=yes&characterEncoding=UTF-8"
+            url: "jdbc:mysql://34.215.48.250:3306/magento?useUnicode=yes&characterEncoding=UTF-8"
             username: "root"
             password: "root80603"
             properties:
